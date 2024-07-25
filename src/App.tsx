@@ -3,7 +3,6 @@ import banner from './assets/banner.png';
 import Card from './components/Card';
 
 const App: Component = () => {
-    
     return (
         <div>
             <header>
