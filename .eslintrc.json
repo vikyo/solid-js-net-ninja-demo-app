@@ -19,6 +19,14 @@
         "semi": ["error", "always"],
         "quotes": ["error", "single"],
         "@typescript-eslint/no-unused-vars": ["error"],
-        "@typescript-eslint/no-non-null-assertion": "off"
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "no-console": ["error"],
+        "no-restricted-syntax": [
+            "error",
+            {
+                "selector": "ForStatement",
+                "message": "for loops are not allowed. Use higher-order functions like forEach, map, filter, or reduce instead."
+            }
+        ]
     }
 }
