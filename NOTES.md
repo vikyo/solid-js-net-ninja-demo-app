@@ -10,3 +10,6 @@ https://khalilstemmler.com/blogs/tooling/prettier/
 https://khalilstemmler.com/blogs/tooling/enforcing-husky-precommit-hooks/
 https://prettier.io/docs/en/ignore.html
 
+To add tailwind:
+https://tailwindcss.com/docs/guides/solidjs
+
