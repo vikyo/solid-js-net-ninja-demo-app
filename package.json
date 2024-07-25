@@ -8,7 +8,7 @@
         "build": "vite build",
         "serve": "vite preview",
         "format": "prettier --config .prettierrc.json 'src/' --write",
-        "lint": "eslint 'src/**/*.{ts,tsx}'"
+        "lint": "eslint 'src/**/*.{ts,tsx,js}'"
     },
     "license": "MIT",
     "devDependencies": {
