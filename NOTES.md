@@ -13,3 +13,11 @@ https://prettier.io/docs/en/ignore.html
 To add tailwind:
 https://tailwindcss.com/docs/guides/solidjs
 
+In solid the function does not re render again and again unlike react.
+Here the component function runs once only.
+After that only the value that is subscribed to signals only changes without the full re render.
+
+There is no virtual dom in solidjs.
+
+State changes happens using createSignal, which retuns a getter and setter functions.
+For complex nested objects or arrays we use createStore instead of createSignal.

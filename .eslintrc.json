@@ -14,7 +14,16 @@
     "parserOptions": { "project": ["./tsconfig.json"] },
     "plugins": ["@typescript-eslint", "solid"],
     "rules": {
-        "import/extensions": ["error", "ignorePackages", { "": "never" }],
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+                "js": "never",
+                "jsx": "never",
+                "ts": "never",
+                "tsx": "never"
+            }
+        ],
         "prettier/prettier": ["error", { "endOfLine": "auto" }],
         "semi": ["error", "always"],
         "quotes": ["error", "single"],
@@ -28,5 +37,12 @@
                 "message": "for loops are not allowed. Use higher-order functions like forEach, map, filter, or reduce instead."
             }
         ]
+    },
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [".js", ".jsx", ".ts", ".tsx"]
+            }
+        }
     }
 }
