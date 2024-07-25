@@ -7,7 +7,7 @@
         "dev": "vite",
         "build": "vite build",
         "serve": "vite preview",
-        "format": "prettier --config .prettierrc.json 'src/' --write",
+        "format": "prettier --config .prettierrc.json 'src/**/*.{ts,tsx,css,js}' --write",
         "lint": "eslint 'src/**/*.{ts,tsx,js}'"
     },
     "husky": {
