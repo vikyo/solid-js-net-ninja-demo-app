@@ -1,5 +1,5 @@
 import { Component } from 'solid-js';
-import { CardProps } from '../interfaces/CardProps';
+import { CardProps } from '../interfaces';
 
 const Card: Component<CardProps> = (props) => {
     return (

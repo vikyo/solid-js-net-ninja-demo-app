@@ -21,3 +21,8 @@ There is no virtual dom in solidjs.
 
 State changes happens using createSignal, which retuns a getter and setter functions.
 For complex nested objects or arrays we use createStore instead of createSignal.
+
+Solid js Routing usage:
+https://docs.solidjs.com/solid-router/concepts/layouts
+https://github.com/solidjs/solid-router?tab=readme-ov-file#set-up-the-router
+

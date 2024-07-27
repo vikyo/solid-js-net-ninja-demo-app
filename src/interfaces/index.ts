@@ -5,3 +5,7 @@ export interface CardProps {
     rounded: boolean;
     children: JSX.Element;
 }
+
+export interface AppProps {
+    children?: JSX.Element | JSX.Element[];
+}

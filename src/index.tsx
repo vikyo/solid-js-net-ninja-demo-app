@@ -1,8 +1,12 @@
 /* @refresh reload */
+import { Route, Router } from '@solidjs/router';
+import { lazy } from 'solid-js';
 import { render } from 'solid-js/web';
-
-import './index.css';
 import App from './App';
+import './index.css';
+
+const Cart = lazy(() => import('./pages/Cart'));
+const Home = lazy(() => import('./pages/Home'));
 
 const root = document.getElementById('root');
 
@@ -12,4 +16,12 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
     );
 }
 
-render(() => <App />, root!);
+render(
+    () => (
+        <Router root={App}>
+            <Route path="/cart" component={Cart} />
+            <Route path="/" component={Home} />
+        </Router>
+    ),
+    root!
+);

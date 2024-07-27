@@ -9,7 +9,7 @@
         "serve": "vite preview",
         "format": "prettier --config .prettierrc.json 'src/**/*.{ts,tsx,css,js}' --write",
         "lint": "eslint 'src/**/*.{ts,tsx,js}'",
-        "format-lint": "npm run format && npm run lint"
+        "clean": "npm run format && npm run lint"
     },
     "license": "MIT",
     "devDependencies": {
@@ -31,6 +31,7 @@
         "vite-plugin-solid": "^2.8.2"
     },
     "dependencies": {
+        "@solidjs/router": "^0.14.1",
         "solid-js": "^1.8.11"
     }
 }
