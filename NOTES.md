@@ -26,3 +26,4 @@ Solid js Routing usage:
 https://docs.solidjs.com/solid-router/concepts/layouts
 https://github.com/solidjs/solid-router?tab=readme-ov-file#set-up-the-router
 
+In solidjs we dont have to provide key while iterating for the items.

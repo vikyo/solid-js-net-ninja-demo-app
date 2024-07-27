@@ -1,28 +1,23 @@
-import { Component } from 'solid-js';
+import { Component, For, Show, createResource } from 'solid-js';
 import Card from '../components/Card';
+import Product from '../components/Product';
+import { fetchProducts } from '../util';
 
 const Home: Component = () => {
-    return (
-        <div class="grid grid-cols-4 gap-10 my-4">
-            <Card flat={true} rounded={false}>
-                <h2>Ninja Tee, black</h2>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Aliquid, expedita?
-                </p>
-                <button class="btn">view</button>
-            </Card>
+    const [products] = createResource(fetchProducts);
 
-            <Card flat={false} rounded={true}>
-                <h2>Ninja Tee, white</h2>
-                <button class="btn">view</button>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Aliquid, expedita?
-                </p>
-                <p>Only £10</p>
-            </Card>
-        </div>
+    return (
+        <Show when={products()} fallback={<div class="loader" />}>
+            <div class="grid grid-cols-4 gap-10 my-4">
+                <For each={products()}>
+                    {(product) => (
+                        <Card flat={false} rounded={true}>
+                            <Product product={product} />
+                        </Card>
+                    )}
+                </For>
+            </div>
+        </Show>
     );
 };
 
