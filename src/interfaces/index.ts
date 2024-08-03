@@ -26,3 +26,26 @@ export interface ProductDetailUseParamsProps {
     [key: string]: string;
     id: string;
 }
+
+export interface CartProps {
+    children: JSX.Element;
+}
+
+export interface CartItemProps {
+    title: string;
+    qty: number;
+    id: number;
+    price: number;
+}
+
+export type CartItem = {
+    title: string;
+    qty: number;
+    id: number;
+    price: number;
+};
+
+export type CartContextType = {
+    items: CartItem[];
+    setItems: (items: CartItem[]) => void;
+};

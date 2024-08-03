@@ -27,3 +27,5 @@ https://docs.solidjs.com/solid-router/concepts/layouts
 https://github.com/solidjs/solid-router?tab=readme-ov-file#set-up-the-router
 
 In solidjs we dont have to provide key while iterating for the items.
+
+createStore is used to manage the complex data types in place of createSignal.
