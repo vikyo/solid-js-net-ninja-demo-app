@@ -4,7 +4,7 @@ import { CartContextType, CartItem, CartProps } from '../interfaces';
 
 const CartContext = createContext<CartContextType>({
     items: [],
-    setItems: () => { },
+    setItems: () => {},
 });
 
 export const CartContextProvider: Component<CartProps> = (props) => {
@@ -21,6 +21,5 @@ export const CartContextProvider: Component<CartProps> = (props) => {
 };
 
 export const useCartContext = () => {
-    return useContext(CartContext)
-}
-
+    return useContext(CartContext);
+};
