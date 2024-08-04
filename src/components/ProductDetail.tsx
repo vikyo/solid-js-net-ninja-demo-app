@@ -1,5 +1,12 @@
 import { useParams } from '@solidjs/router';
-import { Component, Match, Show, Switch, createResource, createSignal } from 'solid-js';
+import {
+    Component,
+    Match,
+    Show,
+    Switch,
+    createResource,
+    createSignal,
+} from 'solid-js';
 import { useCartContext } from '../context/CartContext';
 import { CartItem, ProductDetailUseParamsProps } from '../interfaces';
 import { fetchProductById } from '../util';
@@ -8,11 +15,13 @@ const ProductDetail: Component = () => {
     const params = useParams<ProductDetailUseParamsProps>();
     const [product] = createResource(() => +params.id, fetchProductById);
     const { items, setItems } = useCartContext();
-    const [getAdding, setAdding] = createSignal<boolean>(false)
+    const [getAdding, setAdding] = createSignal<boolean>(false);
 
     const addProduct = () => {
-        setAdding(true)
-        setTimeout(() => { setAdding(false) }, 1000)
+        setAdding(true);
+        setTimeout(() => {
+            setAdding(false);
+        }, 1000);
         const exists = items.find((p) => p.id === product()?.id);
         if (exists) {
             setItems(
@@ -51,7 +60,11 @@ const ProductDetail: Component = () => {
                             <p class="my-7 text-2xl">
                                 Only ${product()?.price}
                             </p>
-                            <button class="btn" onClick={addProduct} disabled={getAdding()}>
+                            <button
+                                class="btn"
+                                onClick={addProduct}
+                                disabled={getAdding()}
+                            >
                                 Add to Cart
                             </button>
                             <Show when={getAdding()}>
