@@ -11,6 +11,10 @@ body {
     @apply bg-amber-600 py-2 px-3 my-2 inline-block text-white rounded-md border-2 border-amber-600;
 }
 
+.btn:disabled {
+    @apply bg-gray-200 py-2 px-3 my-2 inline-block text-black rounded-md border-2 border-gray-200;
+}
+
 /* HTML: <div class="loader"></div> */
 .loader {
     width: 50px;
