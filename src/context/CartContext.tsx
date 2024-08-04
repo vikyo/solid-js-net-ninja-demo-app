@@ -1,4 +1,4 @@
-import { Component, createContext, useContext } from 'solid-js';
+import { Component, createContext, createEffect, useContext } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import {
     CartContextType,
@@ -13,7 +13,26 @@ const CartContext = createContext<CartContextType>({
 });
 
 export const CartContextProvider: Component<CartProps> = (props) => {
-    const [items, setItems] = createStore<CartItem[]>([]);
+    // Load cart items from local storage
+    const loadItemsFromLocalStorage = (): CartItem[] => {
+        const storedItems = localStorage.getItem('cartItems');
+        return storedItems ? JSON.parse(storedItems) : [];
+    };
+
+    // Save cart items to local storage
+    const saveItemsToLocalStorage = (items: CartItem[]) => {
+        localStorage.setItem('cartItems', JSON.stringify(items));
+    };
+
+    // Initialize store with items from local storage
+    const [items, setItems] = createStore<CartItem[]>(
+        loadItemsFromLocalStorage()
+    );
+
+    // Update local storage whenever items change
+    createEffect(() => {
+        saveItemsToLocalStorage(items);
+    });
 
     const customSetItems: SetItemsFunction = (
         arg1: any,
