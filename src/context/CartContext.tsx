@@ -1,17 +1,30 @@
 import { Component, createContext, useContext } from 'solid-js';
 import { createStore } from 'solid-js/store';
-import { CartContextType, CartItem, CartProps, SetItemsFunction } from '../interfaces';
+import {
+    CartContextType,
+    CartItem,
+    CartProps,
+    SetItemsFunction,
+} from '../interfaces';
 
 const CartContext = createContext<CartContextType>({
     items: [],
-    setItems: () => { }
+    setItems: () => {},
 });
 
 export const CartContextProvider: Component<CartProps> = (props) => {
     const [items, setItems] = createStore<CartItem[]>([]);
 
-    const customSetItems: SetItemsFunction = (arg1: any, arg2?: keyof CartItem, arg3?: any) => {
-        if (typeof arg1 === "function" && typeof arg2 === "string" && typeof arg3 === "function") {
+    const customSetItems: SetItemsFunction = (
+        arg1: any,
+        arg2?: keyof CartItem,
+        arg3?: any
+    ) => {
+        if (
+            typeof arg1 === 'function' &&
+            typeof arg2 === 'string' &&
+            typeof arg3 === 'function'
+        ) {
             // Handle the case where setItems is called with a predicate, key, and updater function
             setItems((prevItems) =>
                 prevItems.map((item) =>

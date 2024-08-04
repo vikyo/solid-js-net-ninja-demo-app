@@ -7,20 +7,20 @@ import { fetchProductById } from '../util';
 const ProductDetail: Component = () => {
     const params = useParams<ProductDetailUseParamsProps>();
     const [product] = createResource(() => +params.id, fetchProductById);
-    const { items, setItems } = useCartContext()
+    const { items, setItems } = useCartContext();
 
     const addProduct = () => {
-        const exists = items.find(p => p.id === product()?.id)
+        const exists = items.find((p) => p.id === product()?.id);
         if (exists) {
             setItems(
                 (p) => p.id === product()?.id,
-                "qty",
+                'qty',
                 (q) => +q + 1
             );
         } else {
-            setItems([...items, { ...product(), qty: 1 } as CartItem])
+            setItems([...items, { ...product(), qty: 1 } as CartItem]);
         }
-    }
+    };
 
     return (
         <Switch>
