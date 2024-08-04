@@ -1,11 +1,26 @@
 import { useParams } from '@solidjs/router';
 import { Component, Match, Switch, createResource } from 'solid-js';
-import { ProductDetailUseParamsProps } from '../interfaces';
+import { useCartContext } from '../context/CartContext';
+import { CartItem, ProductDetailUseParamsProps } from '../interfaces';
 import { fetchProductById } from '../util';
 
 const ProductDetail: Component = () => {
     const params = useParams<ProductDetailUseParamsProps>();
     const [product] = createResource(() => +params.id, fetchProductById);
+    const { items, setItems } = useCartContext()
+
+    const addProduct = () => {
+        const exists = items.find(p => p.id === product()?.id)
+        if (exists) {
+            setItems(
+                (p) => p.id === product()?.id,
+                "qty",
+                (q) => +q + 1
+            );
+        } else {
+            setItems([...items, { ...product(), qty: 1 } as CartItem])
+        }
+    }
 
     return (
         <Switch>
@@ -31,8 +46,11 @@ const ProductDetail: Component = () => {
                             </h2>
                             <p>{product()?.description}</p>
                             <p class="my-7 text-2xl">
-                                Only £{product()?.price}
+                                Only ${product()?.price}
                             </p>
+                            <button class="btn" onClick={addProduct}>
+                                Add to Cart
+                            </button>
                         </div>
                     </div>
                 </div>

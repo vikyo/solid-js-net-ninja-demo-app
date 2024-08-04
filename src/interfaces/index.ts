@@ -47,5 +47,14 @@ export type CartItem = {
 
 export type CartContextType = {
     items: CartItem[];
-    setItems: (items: CartItem[]) => void;
+    setItems: SetItemsFunction;
+};
+
+export type SetItemsFunction = {
+    (
+        predicate: (item: CartItem) => boolean,
+        key: keyof CartItem,
+        updater: (value: CartItem[keyof CartItem]) => CartItem[keyof CartItem]
+    ): void;
+    (items: CartItem[]): void;
 };

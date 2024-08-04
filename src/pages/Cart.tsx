@@ -11,7 +11,7 @@ const Cart: Component = () => {
             <For each={items}>
                 {(item: CartItem) => (
                     <p>
-                        {item.price} - {item.title}
+                        {item.title} - ${item.price} x {item.qty}
                     </p>
                 )}
             </For>
